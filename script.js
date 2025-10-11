@@ -27,8 +27,8 @@
                 currentCity.textContent = `${(data.name)}`;
                 const putResult = document.getElementById('putResultID');
                 putResult.textContent = `${(data.weather[0].main)}`
-                document.getElementById('windSpeedID').textContent = `${(data.wind.speed)}`;
-                document.getElementById('humidityID').textContent = `${(data.main.humidity)}`;
+                document.getElementById('windSpeedID').textContent = `${(data.wind.speed)}km/hr`;
+                document.getElementById('humidityID').textContent = `${(data.main.humidity)}%`;
                 const temp = data.main.temp;
                 const Ctemp = (temp - 32)*1.8;
                 document.getElementById('tempID').textContent = temp + "°F";
