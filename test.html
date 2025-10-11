@@ -1,0 +1,32 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Fetch</title>
+    </head>
+    <body>
+    <script>
+    async function getWeather() {
+    const url = 'https://world-weather-online-api1.p.rapidapi.com/weather.ashx?q=40.73%2C-73&num_of_days=3&tp=1&lang=en&aqi=yes&alerts=no&format=xml';
+    const options = {
+        method: 'GET',
+        headers: {
+        'x-rapidapi-key': '7fe6f675d9mshc143df5d83632fep1a5837jsn6edf395f8dc0',
+        'x-rapidapi-host': 'world-weather-online-api1.p.rapidapi.com'
+        }
+    };
+
+    try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        console.log(result.name);
+    } catch (error) {
+        console.error(error);
+    }
+    }
+
+    getWeather(); // call it here
+    </script>
+    </body>
+    </html>
