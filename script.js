@@ -16,7 +16,7 @@
             console.log(storeSearchData);
 
         const apiKey = 'c91521deb71cbdf06bd24010b494707c';
-        const url = 'https://api.openweathermap.org/data/2.5/weather?appid=c91521deb71cbdf06bd24010b494707c&q=' + storeSearchData;
+        const url = 'https://api.openweathermap.org/data/2.5/weather?appid=c91521deb71cbdf06bd24010b494707c&units=metric&q=' + storeSearchData;
 
         try{
             fetch(url).then(data => data.json())
@@ -27,11 +27,10 @@
                 currentCity.textContent = `${(data.name)}`;
                 const putResult = document.getElementById('putResultID');
                 putResult.textContent = `${(data.weather[0].main)}`
-                document.getElementById('windSpeedID').textContent = `${(data.wind.speed)}km/hr`;
-                document.getElementById('humidityID').textContent = `${(data.main.humidity)}%`;
-                const temp = data.main.temp;
-                const Ctemp = (temp - 32)*1.8;
-                document.getElementById('tempID').textContent = temp + "°F";
+                document.getElementById('windSpeedID').textContent = `${(data.wind.speed)}`;
+                document.getElementById('humidityID').textContent = `${(data.main.humidity)}`;
+                const temp = Math.round(data.main.temp);
+                document.getElementById('tempID').textContent = temp + "°C";
             })
         }catch(err){
             return 500;
