@@ -29,8 +29,11 @@
                 putResult.textContent = `${(data.weather[0].main)}`
                 document.getElementById('windSpeedID').textContent = `${(data.wind.speed)}km/hr`;
                 document.getElementById('humidityID').textContent = `${(data.main.humidity)}%`;
+                document.getElementById('pressureID').textContent = ` ↑${(data.main.pressure)}mb`
+                document.getElementById('visibilityID').textContent = `${(data.visibility)}m`;
                 const temp = Math.round(data.main.temp);
                 document.getElementById('tempID').textContent = temp + "°C";
+                checkLatency();
             })
         }catch(err){
             return 500;
@@ -47,3 +50,42 @@
 //************************************************************************ */
 //************************************************************************ */
 
+window.addEventListener('offline', ()=>{
+    document.getElementById('putResultID').textContent = "You're offline";
+    document.querySelector('.putResult').textContent ="";
+})
+//************************************************************************ */
+//************************************************************************ */
+async function checkLatency(){
+    const url2 = 'https://raw.githubusercontent.com/prattikk69/For-fetching-Data/refs/heads/main/weather.json';
+    const network = document.querySelector('.network');
+    const delay = document.getElementById('networkID');
+        let total = 0;
+    const tests = 5;
+
+    for (let i = 0; i < tests; i++) {
+        const start = performance.now();
+        await fetch(url2, { cache: "no-store" });
+        const end = performance.now();
+        total += end - start;
+    }
+
+    const avg = Math.round(total / tests);
+    console.log(`Average network delay: ${avg.toFixed(2)} ms`);
+    delay.textContent = avg + "ms";
+    if (avg >= 0 && avg <= 99) {
+        network.style.color = 'rgb(21, 211, 88)';
+    } 
+    else if (avg >= 100 && avg <= 150) {
+        network.style.color = 'yellow';
+    } 
+    else {
+        network.style.color = 'red';
+    }
+
+    delay.style.color = 'black';
+
+}
+window.addEventListener('load', checkLatency());
+//************************************************************************ */
+//************************************************************************ */

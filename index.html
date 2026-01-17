@@ -26,6 +26,10 @@
         <div class="aboutMe">
             <p>About Me</p>
             </div>
+            <div class="network">
+                <i class="fa-solid fa-wifi"></i>
+                <span id="networkID">0 ms</span>
+            </div>
             <div class="hideMe">
                 <button class="cross">x</button>
                 <p>I'm Prattikk.</p>
@@ -41,26 +45,32 @@
 
     </div>
     <div class="container">
-        <div class="head">
+        <div class="head liquidGlass">
             <h2>Search the City</h2>
         </div>
-        <div class="currentCity">
-            <h3>Current City: <span id="currentCityID">...</span></h3>
+        <div class="currentCity liquidGlass">
+            <h3>Current City: <span id="currentCityID">None</span></h3>
         </div>
-            <div class="result">
+            <div class="result liquidGlass">
                 <div class="putResult">
-                    <h2>Weather <span id="putResultID">...</span></h2>
+                    <h2>Weather: <span id="putResultID"> None</span></h2>
                 </div>
                 <div class="temperature">
-                    Temperature 
+                    Temperature
                     <span id="tempID">?°C</span>
                 </div>
 
         <div class="wrapper">
-                <div class="windSpeed">
+                <div title="Atmospheric Pressure" class="pressure liquidGlass">
+                    <i class="fas fa-weight-hanging"></i>A.Pressure: <span id="pressureID">...</span>
+                </div>
+                <div title="Visibility" class="visibility liquidGlass">
+                    <i class="fas fa-eye"></i>Visibility: <span id="visibilityID">...</span>
+                </div>
+                <div title="Wind Speed"class="windSpeed liquidGlass">
                     <i class="fa-solid fa-gauge"></i>Wind Speed: <span id="windSpeedID">...</span>
                     </div>
-                <div class="humidity">
+                <div title="Humidity"  class="humidity liquidGlass">
                     <i class="fa-solid fa-droplet"></i>Humidity: <span id="humidityID">...</span>
                 </div>
         </div>
@@ -71,5 +81,4 @@
     <script src="script.js"></script>
 
 </body>
-
 </html>
