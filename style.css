@@ -134,7 +134,8 @@
     .result{
         border: solid;
         margin: 30px 20px;
-        height: 40vh;
+        height: auto;
+        padding-bottom: 25px;
         width: 60%;
         border-radius: 5px;
         text-align: center;
